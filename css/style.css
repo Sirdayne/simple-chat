@@ -63,6 +63,12 @@
 .user:hover .user-nick, .user:hover .user-txt, .user:hover .user-time{
     color: #fff;
 }
+.user-active.user{
+    background: rgb(0, 102, 204);
+}
+.user-active .user-nick, .user-active .user-txt, .user-active .user-time{
+    color: #fff;
+}
 .user-img{
     float:left;
     height: 40px;
@@ -125,6 +131,8 @@
     
     margin: 2px 0;
     text-align: center;
+    
+    display: none;
 }
 .chat-message-time{
     display: inline-block;
@@ -207,6 +215,8 @@
     width: 100%;
     max-width: 600px;
     height: 100%;
+    
+    display: none;
 }
 .ctrl-enter{
     position: absolute;
