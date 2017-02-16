@@ -56,17 +56,20 @@
     
     position: relative;
     cursor: pointer;
+    
+    -webkit-transition: .1s cubic-bezier(.17,.67,.94,.04);
+    transition: .1s cubic-bezier(.17,.67,.94,.04);
 }
 .user:hover{
-    background: rgb(0, 102, 204);
+    background: rgba(0, 102, 204, 0.5);
 }
 .user:hover .user-nick, .user:hover .user-txt, .user:hover .user-time{
     color: #fff;
 }
 .user-active.user{
-    background: rgb(0, 102, 204);
+    background: rgba(0, 102, 204, 1);
 }
-.user-active .user-nick, .user-active .user-txt, .user-active .user-time{
+.user-active .user-nick, .user-active .user-txt, .user-active .user-time, .user-active .user-types{
     color: #fff;
 }
 .user-img{
@@ -92,6 +95,26 @@
     
     overflow: hidden;
     text-overflow: ellipsis;
+    
+    position: relative;
+}
+.user-new-msg{
+    position: absolute;
+    left: 45px;
+    top: 0px;
+    
+    padding: 0px 2px;
+    
+    color: #0066CC;
+    border: 1px solid #0066CC;
+    border-radius: 5px;
+    font-size: 10px;
+    
+    z-index: 2;
+    display: none;
+}
+.user-got-msg .user-new-msg{
+    display: block;
 }
 .user-txt{
     float: left;
@@ -102,6 +125,28 @@
     
     overflow: hidden;
     text-overflow: ellipsis;
+    position: relative;
+    z-index: 1;
+}
+.user-types{
+    float: left;
+    width: calc(100% - 100px);
+    height: 16px;
+    color: #0066CC;
+    font-size: 12px;
+    
+    overflow: hidden;
+    text-overflow: ellipsis;
+    position: relative;
+    z-index: 1;
+    
+    display: none;
+}
+.types-active .user-types{
+    display: block;
+}
+.types-active .user-txt{
+    display: none;
 }
 .user-time{
     position: absolute;
@@ -124,6 +169,41 @@
     border-left: none;
     
     overflow-y: scroll;
+    position: relative;
+}
+.loading{
+    position: absolute;
+    
+    top: 0;
+    left: 0;
+    
+    height: 100%;
+    width: 100%;
+    
+    display: none;
+    opacity: 0;
+    
+    -webkit-transition: .6s cubic-bezier(.17,.67,.94,.04);
+    transition: .6s cubic-bezier(.17,.67,.94,.04);
+}
+.loading.active{
+    display: block;
+    opacity: 1;
+}
+.loading-img{
+    display: flex;
+    
+    height: 100%;
+    width: 100%;
+    
+    -webkit-align-items: center;
+    align-items: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+}
+.loading-img img{
+    width: 20px;
+    height: auto;
 }
 .chat-message{
     float: left;
@@ -133,6 +213,9 @@
     text-align: center;
     
     display: none;
+    
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 .chat-message-time{
     display: inline-block;
@@ -216,7 +299,7 @@
     max-width: 600px;
     height: 100%;
     
-    display: none;
+    display: block;
 }
 .ctrl-enter{
     position: absolute;
