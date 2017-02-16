@@ -26,7 +26,7 @@ $(document).ready(function() {
                 
                 companionTypesEnded(indexUser);
                 scrollBottomChat(500);
-                companionSended(indexUser);
+                notification(indexUser);
                 
             }, 1500);
         }
@@ -43,7 +43,7 @@ $(document).ready(function() {
             $('.user').eq(indexCompanion).removeClass('types-active');
         }
         
-        function companionSended(indexCompanion) {
+        function notification(indexCompanion) {
             $('.user').eq(indexCompanion).addClass('user-got-msg');
             var urlAvatar = $('.user').eq(indexCompanion).find('img').attr('src');
             
@@ -148,16 +148,11 @@ $(document).ready(function() {
     /* СОБЕСЕДНИКИ ПЕЧАТАЮТ */
     chat.companionTypes(3);
     chat.companionTypes(8);
-    chat.companionTypes(14);
     
     /* ПОЛУЧЕНО НОВОЕ СООБЩЕНИЕ */
     chat.companionSended(1);
     window.setTimeout(function(){
         chat.companionSended(2);
     }, 1000);
-    window.setTimeout(function(){
-        chat.companionSended(5);
-    }, 5000); 
-    
     
 });
