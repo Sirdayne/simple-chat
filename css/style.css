@@ -37,7 +37,7 @@
     
     background: rgba(204,204,204, 0.3);
 }
-.chat-users{
+#chat-users{
     float: left;
     width: 360px;
     height: inherit;
@@ -72,6 +72,7 @@
 .user-active .user-nick, .user-active .user-txt, .user-active .user-time, .user-active .user-types{
     color: #fff;
 }
+
 .user-img{
     float:left;
     height: 40px;

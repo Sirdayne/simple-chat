@@ -27,169 +27,23 @@
     <div class="chat">
         <div class="chat-title">Simple chat</div>
         <div class="chat-container">
-            <div class="chat-users">
-                <div class="user">
-                    <div class="user-img"><img src="./img/u1.png" alt=""></div>
-                    <div class="user-nick">User 1
-                        <div class="user-new-msg">+999</div>
-                    </div>
-                    <div class="user-txt">Привет, как дела?</div>
-                    <div class="user-types">Собеседник печатает...</div>
-                    <div class="user-time">12:00</div>
+           
+            <div id="chat-users">
+               
+                <div class="user" 
+                    v-bind:class="{ 'user-active': user.isActive }"
+                    v-on:click="userClick"
+                    v-for="user in users">
+                    
+                        <div class="user-img"><img v-bind:src="user.img" alt=""></div>
+                        <div class="user-nick">{{ user.nick }}
+                            <div class="user-new-msg">+999</div>
+                        </div>
+                        <div class="user-txt">Привет, как дела?</div>
+                        <div class="user-types">Собеседник печатает...</div>
+                        <div class="user-time">12:00</div>
                 </div>
-                <div class="user">
-                    <div class="user-img"><img src="./img/u2.png" alt=""></div>
-                    <div class="user-nick">
-                        User 1
-                        <div class="user-new-msg">+999</div>
-                    </div>
-                    <div class="user-txt">Привет, как дела?</div>
-                    <div class="user-types">Собеседник печатает...</div>
-                    <div class="user-time">12:00</div>
-                </div>
-                <div class="user">
-                    <div class="user-img"><img src="./img/u3.png" alt=""></div>
-                    <div class="user-nick">User 1
-                        <div class="user-new-msg">+999</div>
-                    </div>
-                    <div class="user-txt">Привет, как дела?</div>
-                    <div class="user-types">Собеседник печатает...</div>
-                    <div class="user-time">12:00</div>
-                </div>
-                <div class="user">
-                    <div class="user-img"><img src="./img/u4.png" alt=""></div>
-                    <div class="user-nick">User 1
-                        <div class="user-new-msg">+999</div>
-                    </div>
-                    <div class="user-txt">Привет, как дела?</div>
-                    <div class="user-types">Собеседник печатает...</div>
-                    <div class="user-time">12:00</div>
-                </div>
-                <div class="user">
-                    <div class="user-img"><img src="./img/u4.png" alt=""></div>
-                    <div class="user-nick">User 1
-                        <div class="user-new-msg">+999</div>
-                    </div>
-                    <div class="user-txt">Привет, как дела?</div>
-                    <div class="user-types">Собеседник печатает...</div>
-                    <div class="user-time">12:00</div>
-                </div>
-                <div class="user">
-                    <div class="user-img"><img src="./img/u4.png" alt=""></div>
-                    <div class="user-nick">User 1 
-                        <div class="user-new-msg">+999</div>
-                    </div>
-                    <div class="user-txt">Привет, как дела? Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quo quam, quod optio nam quas quibusdam. Ipsa harum aliquam aut modi omnis fuga eum tempora delectus, cum ex officia, ducimus repellendus.</div>
-                    <div class="user-time">12:00</div>
-                </div>
-                <div class="user">
-                    <div class="user-img"><img src="./img/u4.png" alt=""></div>
-                    <div class="user-nick">User 1
-                        <div class="user-new-msg">+999</div>
-                    </div>
-                    <div class="user-txt">Привет, как дела?</div>
-                    <div class="user-types">Собеседник печатает...</div>
-                    <div class="user-time">12:00</div>
-                </div>
-                <div class="user">
-                    <div class="user-img"><img src="./img/u4.png" alt=""></div>
-                    <div class="user-nick">User 1
-                        <div class="user-new-msg">+999</div>
-                    </div>
-                    <div class="user-txt">Привет, как дела?</div>
-                    <div class="user-types">Собеседник печатает...</div>
-                    <div class="user-time">12:00</div>
-                </div>
-                <div class="user">
-                    <div class="user-img"><img src="./img/u4.png" alt=""></div>
-                    <div class="user-nick">User 1
-                        <div class="user-new-msg">+999</div>
-                    </div>
-                    <div class="user-txt">Привет, как дела?</div>
-                    <div class="user-types">Собеседник печатает...</div>
-                    <div class="user-time">12:00</div>
-                </div>
-                <div class="user">
-                    <div class="user-img"><img src="./img/u4.png" alt=""></div>
-                    <div class="user-nick">User 1
-                        <div class="user-new-msg">+999</div>
-                    </div>
-                    <div class="user-txt">Привет, как дела?</div>
-                    <div class="user-types">Собеседник печатает...</div>
-                    <div class="user-time">12:00</div>
-                </div>
-                <div class="user">
-                    <div class="user-img"><img src="./img/u4.png" alt=""></div>
-                    <div class="user-nick">User 1
-                        <div class="user-new-msg">+999</div>
-                    </div>
-                    <div class="user-txt">Привет, как дела?</div>
-                    <div class="user-types">Собеседник печатает...</div>
-                    <div class="user-time">12:00</div>
-                </div>
-                <div class="user">
-                    <div class="user-img"><img src="./img/u4.png" alt=""></div>
-                    <div class="user-nick">User 
-                        <div class="user-new-msg">+999</div>
-                    </div>
-                    <div class="user-txt">Привет, как дела?</div>
-                    <div class="user-types">Собеседник печатает...</div>
-                    <div class="user-time">12:00</div>
-                </div>
-                <div class="user">
-                    <div class="user-img"><img src="./img/u4.png" alt=""></div>
-                    <div class="user-nick">User 1\
-                        <div class="user-new-msg">+999</div>
-                    </div>
-                    <div class="user-txt">Привет, как дела?</div>
-                    <div class="user-types">Собеседник печатает...</div>
-                    <div class="user-time">12:00</div>
-                </div>
-                <div class="user">
-                    <div class="user-img"><img src="./img/u4.png" alt=""></div>
-                    <div class="user-nick">User 1
-                        <div class="user-new-msg">+999</div>
-                    </div>
-                    <div class="user-txt">Привет, как дела?</div>
-                    <div class="user-types">Собеседник печатает...</div>
-                    <div class="user-time">12:00</div>
-                </div>
-                <div class="user">
-                    <div class="user-img"><img src="./img/u4.png" alt=""></div>
-                    <div class="user-nick">User 1
-                        <div class="user-new-msg">+999</div>
-                    </div>
-                    <div class="user-txt">Привет, как дела?</div>
-                    <div class="user-types">Собеседник печатает...</div>
-                    <div class="user-time">12:00</div>
-                </div>
-                <div class="user">
-                    <div class="user-img"><img src="./img/u4.png" alt=""></div>
-                    <div class="user-nick">User 1
-                        <div class="user-new-msg">+999</div>
-                    </div>
-                    <div class="user-txt">Привет, как дела?</div>
-                    <div class="user-types">Собеседник печатает...</div>
-                    <div class="user-time">12:00</div>
-                </div>
-                <div class="user">
-                    <div class="user-img"><img src="./img/u4.png" alt=""></div>
-                    <div class="user-nick">User 1
-                        <div class="user-new-msg">+999</div>
-                    </div>
-                    <div class="user-txt">Привет, как дела?</div>
-                    <div class="user-types">Собеседник печатает...</div>
-                    <div class="user-time">12:00</div>
-                </div>
-                <div class="user">
-                    <div class="user-img"><img src="./img/u4.png" alt=""></div>
-                    <div class="user-nick">User 1
-                        <div class="user-new-msg">+999</div>
-                    </div>
-                    <div class="user-txt">Привет, как дела?</div>
-                    <div class="user-types">Собеседник печатает...</div>
-                    <div class="user-time">12:00</div>
-                </div>
+                
             </div>
             
             <div class="chat-messages">
@@ -303,7 +157,9 @@
 
 <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
 
-<script src="js/script.js"></script>
+<script src="js/vue.js"></script>
+
+<script src="js/vue-script.js"></script>
 
 </body>
 </html>
