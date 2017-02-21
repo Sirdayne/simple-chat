@@ -1,3 +1,40 @@
+@-webkit-keyframes anima-1 {   
+    0%{opacity: 0;}
+    25%{opacity: 1;}
+    50%{opacity: 1;}
+    100%{opacity: 1;}
+}
+@keyframes anima-1 {   
+    0%{opacity: 0;}
+    25%{opacity: 1;}
+    50%{opacity: 1;}
+    100%{opacity: 1;}
+}
+@-webkit-keyframes anima-2 {   
+    0%{opacity: 0;}
+    25%{opacity: 0;}
+    50%{opacity: 1;}
+    100%{opacity: 1;}
+}
+@keyframes anima-2 {   
+    0%{opacity: 0;}
+    25%{opacity: 0;}
+    50%{opacity: 1;}
+    100%{opacity: 1;}
+}
+@-webkit-keyframes anima-3 {   
+    0%{opacity: 0;}
+    25%{opacity: 0;}
+    50%{opacity: 0;}
+    100%{opacity: 1;}
+}
+@keyframes anima-3 {   
+    0%{opacity: 0;}
+    25%{opacity: 0;}
+    50%{opacity: 0;}
+    100%{opacity: 1;}
+}
+
 
 .main{
     display: flex;
@@ -37,7 +74,7 @@
     
     background: rgba(204,204,204, 0.3);
 }
-#chat-users{
+.chat-users{
     float: left;
     width: 360px;
     height: inherit;
@@ -143,6 +180,22 @@
     
     display: none;
 }
+.types-text, .dot{
+    float: left;
+    margin: 0;
+}
+.dot-1{
+    -webkit-animation: anima-1 1s linear infinite;
+    animation: anima-1 1s linear infinite;
+}
+.dot-2{
+    -webkit-animation: anima-2 1s linear infinite;
+    animation: anima-2 1s linear infinite;
+}
+.dot-3{
+    -webkit-animation: anima-3 1s linear infinite;
+    animation: anima-3 1s linear infinite;
+}
 .types-active .user-types{
     display: block;
 }
@@ -159,7 +212,7 @@
     
     vertical-align: top;
 }
-.chat-messages{
+.chat-inner{
     float: left;
     width: 600px;
     height: 75%;
@@ -182,10 +235,12 @@
     width: 100%;
     
     display: none;
-    opacity: 0;
+    background: #fff;
     
     -webkit-transition: .6s cubic-bezier(.17,.67,.94,.04);
     transition: .6s cubic-bezier(.17,.67,.94,.04);
+    
+    z-index: 2;
 }
 .loading.active{
     display: block;
@@ -206,16 +261,23 @@
     width: 20px;
     height: auto;
 }
+.chat-messages{
+    float: left;
+    display: none;
+    
+    position: relative;
+    z-index: 1;
+}
+.chat-active.chat-messages{
+    display: block;
+}
 .chat-message{
     float: left;
     width: 100%;
     
-    margin: 2px 0;
+    margin: 4px 0;
     text-align: center;
     
-    display: none;
-    
-    overflow: hidden;
     text-overflow: ellipsis;
 }
 .chat-message-time{

@@ -23,16 +23,16 @@
 </head>
 <body>    
 
-<section class="main">
+<section class="main" id="vue-chat">
     <div class="chat">
         <div class="chat-title">Simple chat</div>
         <div class="chat-container">
            
-            <div id="chat-users">
+            <div class="chat-users">
                
                 <div class="user" 
-                    v-bind:class="{ 'user-active': user.isActive }"
-                    v-on:click="userClick"
+                    v-bind:class="{ 'user-active': user.isActive, 'user-got-msg': user.isNew, 'types-active': user.isTypes }"
+                    v-on:click="userClick(user)"
                     v-for="user in users">
                     
                         <div class="user-img"><img v-bind:src="user.img" alt=""></div>
@@ -40,115 +40,41 @@
                             <div class="user-new-msg">+999</div>
                         </div>
                         <div class="user-txt">Привет, как дела?</div>
-                        <div class="user-types">Собеседник печатает...</div>
+                        <div class="user-types">
+                            <span class="types-text">Собеседник печатает</span>
+                            <span class="dot dot-1">.</span>
+                            <span class="dot dot-2">.</span>
+                            <span class="dot dot-3">.</span>
+                        </div>
                         <div class="user-time">12:00</div>
                 </div>
                 
             </div>
             
-            <div class="chat-messages">
-                <div class="loading">
+            <div class="chat-inner">
+                <div class="loading" v-bind:class="{ 'active': loadingActive }">
                     <div class="loading-img">
                         <img src="./img/loading.gif" alt="">
                     </div>
                 </div>
-               
-                <div class="chat-message">
-                    <div class="chat-message-time">12 дек 2017</div>
-                </div>
-                   
-                <div class="chat-message">
-                    <div class="message-txt">
-                        Привет!
-                        <div class="message-time"><div class="msg-time">12:00</div></div>
-                    </div>
-                </div>
                 
-                <div class="chat-message">
-                    <div class="message-txt message-companion">
-                        Привет! Как дела?
-                        <div class="message-time"><div class="msg-time">12:00</div></div>
+                <div class="chat-messages" v-bind:class="{ 'chat-active': chatActive }">
+                    <div class="chat-message">
+                        <div class="chat-message-time">12 дек 2017</div>
                     </div>
-                </div>
-                
-                <div class="chat-message">
-                    <div class="message-txt">
-                        Отлично
-                        <div class="message-time"><div class="msg-time">12:00</div></div>
-                    </div>
-                </div>
-                
-                <div class="chat-message">
-                    <div class="message-txt message-companion">
-                        Чем могу помочь?
-                        <div class="message-time"><div class="msg-time">12:00</div></div>
-                    </div>
-                </div>
-                
-                <div class="chat-message">
-                    <div class="message-txt">
-                        Искусство понимает под собой естественный интеллект. Апостериори, реальность ментально подрывает здравый смысл. Сомнение, по определению, оспособляет примитивный принцип восприятия. Апостериори, язык образов принимает во внимание бабувизм.
-                        <div class="message-time"><div class="msg-time">12:00</div></div>
-                    </div>
-                </div>
-                
-                <div class="chat-message">
-                    <div class="message-txt message-companion">
-                        Привет, как дела?
-                        <div class="message-time"><div class="msg-time">12:00</div></div>
-                    </div>
-                </div>
-                
-                <div class="chat-message">
-                    <div class="chat-message-time">12 дек 2017</div>
-                </div>
-                   
-                <div class="chat-message">
-                    <div class="message-txt">
-                        Привет!
-                        <div class="message-time"><div class="msg-time">12:00</div></div>
-                    </div>
-                </div>
-                
-                <div class="chat-message">
-                    <div class="message-txt message-companion">
-                        Привет! Как дела?
-                        <div class="message-time"><div class="msg-time">12:00</div></div>
-                    </div>
-                </div>
-                
-                <div class="chat-message">
-                    <div class="message-txt">
-                        Отлично
-                        <div class="message-time"><div class="msg-time">12:00</div></div>
-                    </div>
-                </div>
-                
-                <div class="chat-message">
-                    <div class="message-txt message-companion">
-                        Чем могу помочь?
-                        <div class="message-time"><div class="msg-time">12:00</div></div>
-                    </div>
-                </div>
-                
-                <div class="chat-message">
-                    <div class="message-txt">
-                        Искусство понимает под собой естественный интеллект. Апостериори, реальность ментально подрывает здравый смысл. Сомнение, по определению, оспособляет примитивный принцип восприятия. Апостериори, язык образов принимает во внимание бабувизм.
-                        <div class="message-time"><div class="msg-time">12:00</div></div>
-                    </div>
-                </div>
-                
-                <div class="chat-message">
-                    <div class="message-txt message-companion">
-                        Привет, как дела?
-                        <div class="message-time"><div class="msg-time">12:00</div></div>
+
+                    <div class="chat-message" v-for="message in messages">
+                        <div class="message-txt" v-bind:class="{ 'message-companion': message.isCompanion }">
+                            {{ message.text }}
+                            <div class="message-time"><div class="msg-time">12:00</div></div>
+                        </div>
                     </div>
                 </div>
                 
             </div>
             
             <div class="chat-submit">
-                <textarea name="" id="textarea" cols="30" rows="10" disabled></textarea>
+                <textarea name="" id="textarea" cols="30" rows="10" v-model="newMessage" v-on:keyup.ctrl.enter="addMessage" :disabled="textareaDisabled"></textarea>
                 <div class="ctrl-enter">Ctrl+Enter</div>
             </div>
         </div>
